@@ -1,0 +1,35 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 16px;
+}
+
+form h1 {
+    margin: 0;
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+.input-group label {
+    font-size: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    height: 3rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.invalid input {
+    outline: none;
+    border: 2px solid red;
+}
+
+.invalid p {
+    color: red;
+    margin: 0 0 0 10px;
+}

@@ -1,13 +1,14 @@
 import Card from '../UI/Card/Card';
 
-import styles from './Login.module.css';
-import LoginForm from './LoginForm';
+// import styles from './Login.module.css';
+// import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
+
 
 const Login = () => {
     return (
         <Card>
-            <h1>Sign-in</h1>
-            <LoginForm/> 
+            <SignUpForm/>
         </Card>
     );
 };
