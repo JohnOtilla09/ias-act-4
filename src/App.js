@@ -1,9 +1,10 @@
 import styles from './App.module.css';
+import Login from './components/Login/Login';
 
 function App() {
   return (
     <div className={styles.app}>
-      <h2>Let's get started!</h2>
+      <Login />
     </div>
   );
 }
