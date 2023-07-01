@@ -22,14 +22,32 @@ form h1 {
     font-size: 1.5rem;
     border-radius: 50px;
     text-align: center;
+    outline: none;
+    background-color: #d4edda;
+    border: 2px solid #0e8229;
 }
 
-.invalid input {
+.input-group input:focus {
+    background: #fff;
+    border: 2px solid black;
+}
+
+.input-group.invalid input {
     outline: none;
+    background: #ffcbd1;
     border: 2px solid red;
 }
 
-.invalid p {
+.input-group.invalid p {
     color: red;
     margin: 0 0 0 10px;
+}
+
+.noAccount button {
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    color: #0000ff;
 }

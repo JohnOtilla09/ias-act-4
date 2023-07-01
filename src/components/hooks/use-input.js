@@ -7,6 +7,8 @@ const useInput = (validate) => {
     const valuesIsValid = validate(enteredValue);
     const hasError = !valuesIsValid && isTouched;
 
+    console.log(enteredValue.includes('@'));
+
     const valueChangeHandler = (event) => {
         setEnteredValue(event.target.value);
     }
