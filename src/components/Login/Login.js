@@ -29,7 +29,11 @@ const Login = (props) => {
         setSignIn(prevSignIn => !prevSignIn);
     };
 
-    const content = !signIn ? <SignInForm /> : <SignUpForm onAddUser={AddUserHandler}/>;
+    const handleShit = (e) => {
+        console.log('data:', e)
+    }
+
+    const content = !signIn ? <SignInForm onSub={handleShit}/> : <SignUpForm onAddUser={AddUserHandler}/>;
 
     return (
         <Card>

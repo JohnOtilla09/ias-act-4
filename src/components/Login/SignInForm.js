@@ -8,8 +8,16 @@ const SignInForm = (props) => {
     const formSubmitHandler = (event) => {
         event.preventDefault();
 
+        console.log("test")
+        const email = event.target.email.value
+
+        console.log(email)
+
+        props.onSub({email})
+
         
     }
+
 
     return (
         <form onSubmit={formSubmitHandler}>
@@ -20,7 +28,7 @@ const SignInForm = (props) => {
             <div className={`${styles['input-group']}`}>
                 <input type="password" id="password" autoComplete="false" placeholder='Password'/>
             </div>
-            <Button>Sign-in</Button>
+            <Button type="submit">Sign-in</Button>
         </form>
     );
 };
