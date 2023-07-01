@@ -42,12 +42,3 @@ form h1 {
     color: red;
     margin: 0 0 0 10px;
 }
-
-.noAccount button {
-    font-size: 1.1rem;
-    cursor: pointer;
-    border: none;
-    background: none;
-    text-decoration: underline;
-    color: #0000ff;
-}
