@@ -41,7 +41,7 @@ const SignUpForm = (props) => {
           confirmPassword: enteredPasswordIsValid,
         });
 
-        if (!formInputValidity){
+        if (!enteredEmailIsValid && !enteredPasswordIsValid) {
           return;
         }
 
@@ -63,20 +63,25 @@ const SignUpForm = (props) => {
 
     const emailInputGroupStyles = !formInputValidity.email ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
     const passwordInputGroupStyles = !formInputValidity.password ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
+    const invalidEmail = <div className={styles.invalidEmail}>
+        <p>Email already used!</p>
+    </div>
 
     return (
       <form onSubmit={formSubmitHandler}>
         <h1>Sign-Up</h1>
-
+        {props.error && invalidEmail}
         <div className={emailInputGroupStyles}>
           <input
-            type="text"
+            type="email"
             id="email"
             ref={emailRef}
             autoComplete="false"
             placeholder="Email"
           />
-          {!formInputValidity.email && <p>Please enter a valid email</p>}
+          {!formInputValidity.email && (
+            <p>Please enter a valid email</p>
+          )}
         </div>
         <div className={passwordInputGroupStyles}>
           <input
@@ -86,7 +91,9 @@ const SignUpForm = (props) => {
             autoComplete="false"
             placeholder="Password"
           />
-          {!formInputValidity.password && <p>Please re-enter your password</p>}
+          {!formInputValidity.password && (
+            <p>Please re-enter your password</p>
+          )}
         </div>
         <div className={passwordInputGroupStyles}>
           <input

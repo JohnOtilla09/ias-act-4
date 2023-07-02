@@ -7,7 +7,11 @@ import Card from '../UI/Card/Card';
 
 const DummyUsers = [
     {
-        email: 'Otilla@gmail.com',
+        email: 'otilla@gmail.com',
+        password: '123456789'
+    },
+    {
+        email: 'sofia@gmail.com',
         password: '123456789'
     }
 ];
@@ -15,31 +19,50 @@ const DummyUsers = [
 const Login = (props) => {
     const [ accounts, setAccounts ] = useState(DummyUsers);
     const [ signIn, setSignIn ] = useState(false);
+    const [ invalidError, setIsInvalidError ] = useState(false);
 
     const AddUserHandler = (userAccount) => {
-    
+        setIsInvalidError(false);
+
+        const isEmailAvailable = DummyUsers.find((user) => user.email === userAccount.email);
+
+        if (isEmailAvailable) {
+            setIsInvalidError(true);
+            return;
+        }
+        
         setAccounts((prevAccounts) => {
-            return [userAccount, ...accounts];
+            return [userAccount, ...accounts]
         });
 
-        console.log(accounts);
+        props.onWelcomePage(userAccount);
     };
 
-    const signInHandler = () => {
-        setSignIn(prevSignIn => !prevSignIn);
-    };
+    const signInHandler = (userData) => {
+        setIsInvalidError(false);
 
-    const handleShit = (e) => {
-        console.log('data:', e)
+        const isEmailAvailable = DummyUsers.find((user) => user.email === userData.email && user.password === userData.password);
+
+        if (!isEmailAvailable) {
+            console.log(isEmailAvailable);
+            setIsInvalidError(true);
+            return;
+        }
+        props.onWelcomePage(userData);
     }
 
-    const content = !signIn ? <SignInForm onSub={handleShit}/> : <SignUpForm onAddUser={AddUserHandler}/>;
+    const optionHandler = () => {
+        setSignIn(prevSignIn => !prevSignIn);
+        setIsInvalidError(false);
+    }
+
+    const content = !signIn ? <SignInForm onSignIn={signInHandler} error={invalidError}/> : <SignUpForm onAddUser={AddUserHandler} error={invalidError}/>;
 
     return (
         <Card>
             { content }
             <div className={styles.noAccount}>
-                Don't have an account? <button onClick={signInHandler}>Sign-up</button>
+                Don't have an account? <button type='button' onClick={optionHandler}>Sign-up</button>
             </div>
         </Card>
     );
