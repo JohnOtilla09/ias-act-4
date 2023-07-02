@@ -1,8 +1,16 @@
 .home {
-    width: 25rem;
+    width: 40rem;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 16px;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding-bottom: 2rem;
 }
 
 .button-64 {
@@ -57,4 +65,8 @@
 
 .home .Button {
     width: 100%;
+}
+
+.home a {
+    text-decoration: none;
 }
