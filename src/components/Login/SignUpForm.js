@@ -1,3 +1,4 @@
+import { RiErrorWarningFill } from "react-icons/ri";
 import { useRef, useState } from 'react';
 
 import Button from '../UI/Button/Button';
@@ -64,7 +65,7 @@ const SignUpForm = (props) => {
     const emailInputGroupStyles = !formInputValidity.email ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
     const passwordInputGroupStyles = !formInputValidity.password ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
     const invalidEmail = <div className={styles.invalidEmail}>
-        <p>Email already used!</p>
+        <RiErrorWarningFill size={25} /><p>Email already used!</p>
     </div>
 
     return (

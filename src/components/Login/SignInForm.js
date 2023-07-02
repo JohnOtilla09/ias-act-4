@@ -1,3 +1,5 @@
+import { RiErrorWarningFill } from "react-icons/ri";
+
 import Button from '../UI/Button/Button';
 import useInput from '../hooks/use-input';
 
@@ -47,7 +49,7 @@ const SignInForm = (props) => {
     const emailInputGroupStyles = enteredEmailHasError ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
     const passwordInputGroupStyles = enteredPasswordHasError ? `${styles["input-group"]} ${styles.invalid}` : `${styles["input-group"]}`;
     const invalidEmail = <div className={styles.invalidEmail}>
-        <p>Invalid credentials!</p>
+        <RiErrorWarningFill size={25} /><p>Invalid credentials!</p>
     </div>
 
     return (
