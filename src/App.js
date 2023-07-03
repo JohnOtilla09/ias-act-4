@@ -16,7 +16,7 @@ const App = () => {
     }
   }, []);
 
-  const welcomePageHandler = (userAccount) => {
+  const welcomePageHandler = () => {
     localStorage.setItem('isLoggedIn', 1);
     setIsLogin(true);
   }

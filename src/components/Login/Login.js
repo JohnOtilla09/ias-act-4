@@ -17,6 +17,7 @@ const DummyUsers = [
 ];
 
 const Login = (props) => {
+
     const [ accounts, setAccounts ] = useState(DummyUsers);
     const [ signIn, setSignIn ] = useState(false);
     const [ invalidError, setIsInvalidError ] = useState(false);
@@ -24,31 +25,30 @@ const Login = (props) => {
     const AddUserHandler = (userAccount) => {
         setIsInvalidError(false);
 
-        const isEmailAvailable = DummyUsers.find((user) => user.email === userAccount.email);
+        const isEmailAvailable = accounts.find((user) => user.email === userAccount.email);
 
         if (isEmailAvailable) {
             setIsInvalidError(true);
             return;
         }
-        
-        setAccounts((prevAccounts) => {
-            return [userAccount, ...accounts]
-        });
 
-        props.onWelcomePage(userAccount);
+        setAccounts(preAccounts => {
+            return [ ...preAccounts, userAccount ];
+        });
+        props.onWelcomePage();
     };
 
-    const signInHandler = (userData) => {
+    console.log(accounts);
+
+    const signInHandler = (userAccount) => {
         setIsInvalidError(false);
 
-        const isEmailAvailable = DummyUsers.find((user) => user.email === userData.email && user.password === userData.password);
-
+        const isEmailAvailable = accounts.find((user) => user.email === userAccount.email && user.password === userAccount.password);
         if (!isEmailAvailable) {
-            console.log(isEmailAvailable);
             setIsInvalidError(true);
             return;
         }
-        props.onWelcomePage(userData);
+        props.onWelcomePage();
     }
 
     const optionHandler = () => {
